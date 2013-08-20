@@ -1,4 +1,8 @@
 # Code base structure:
+# Frame - the skeleton that connects things together
+# Toolkit - tools to perform actual job(s)
+# Service - the idea here is to 'wrap' tools from Toolkit to be avaiable in multiple places (~singleton)
+#		Hook - hooks to trigger in during the job. Probaly no need to be a standalone toolkit.
 - uni-scraper
   - app
     - Frame
@@ -17,10 +21,7 @@
         - ParserToolkit.php
       - Toolkit.php
     - Service
+      - Hook
+        - HookService.php
       - Service.php
   - vendor
-  
-# Explanation:
-# Frame - the skeleton that connects things together
-# Toolkit - tools to perform actual job(s)
-# Service - the idea here is to 'wrap' tools from Toolkit to be avaiable in multiple places (~singleton)
