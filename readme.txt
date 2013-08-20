@@ -1,0 +1,26 @@
+# Code base structure:
+- uni-scraper
+  - app
+    - Frame
+    - Toolkit
+      - Browser
+        - Http
+        - Js
+        - BrowserToolkit.php
+      - Extractor
+        - Extractor.php
+      - Parser
+        - Html
+        - Xml
+        - Json
+        - Yaml
+        - ParserToolkit.php
+      - Toolkit.php
+    - Service
+      - Service.php
+  - lib
+  
+# Explanation:
+# Frame - the skeleton that connects things together
+# Toolkit - tools to perform actual job(s)
+# Service - the idea here is to 'wrap' tools from Toolkit to be avaiable in multiple places (~singleton)
