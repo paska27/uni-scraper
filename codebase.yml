@@ -18,7 +18,7 @@
       - Toolkit.php
     - Service
       - Service.php
-  - lib
+  - vendor
   
 # Explanation:
 # Frame - the skeleton that connects things together
