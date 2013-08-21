@@ -1,0 +1,21 @@
+{
+	"tool-kit": {
+		"browser": "http",
+		"parser": "html"
+	},
+	"service": [
+		"hook",
+		{"db": "mysql"},
+		"config"
+	],
+	"storage": {
+		"type": "db",
+		"config": {
+			"driver": "mysql",
+			"host": "some.host.com",
+			"dbname": "uni_sample_db",
+			"username": "root",
+			"password": ""
+		}
+	}
+}
