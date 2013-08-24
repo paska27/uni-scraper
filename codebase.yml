@@ -8,29 +8,56 @@
 # 1. Instance is a specific project, an instance of Uni Scraper
 # 2. A name for instance could prefix with "unis-" as a convention
 # 3. Instance consists of jobs. They are a building blocks. They have to 
-#inherit from AbstractJob.php. Inside them instructions are available:
-#browse(url), parse(page), extract(items), saveResults(). A specific job can have its own
-#'user-defined' instructions.
+#inherit from AbstractJob.php in order to have all tools requested in unis.json. 
+# Inside them instructions are available: #browse(url), parse(page), extract(items), saveResults(). 
+# A specific job can have its own user-defined instructions.
 # 4. unis.json. Configuration file which holds to tweak the instance:
 #which services from UNIS to use. How to use them. How to connect to storage and so on.
-# 5. spec.json. Configuration file for jobs. Instance-level spec.json is
-#overwritten with job-level config.job files. They hold configuration as:
+# 5. spec.json. Configuration file for jobs. Instance-level job.json is
+#overwritten with job-level job.json files. They hold configuration as:
 #paths to extract from, field maps, urls etc. Also cycles config (more advanced).
 # 6. Run.php is a starting point.
 
 #Parsing and extracting
 #1. Parser returns collection NodeItem[]
 #2. Extractor works only with collection NodeItem[]
+
+# Worker:
+# 1. Prepares environment: 
+#		- reads unis.json and creates a set of tools available as services
+#		- reads job.json 'global'
+# 2. Scans jobs folder, creates jobs, runs them
+#
+#NOTE: AbstractJob:
+#		- can access any tool (specified in unis.json) as service, so
+# no need to ovehead it with bulk properties holding tools
+#		- will have some 'magic' instructions:
+#			* spec(keys): finds values from job.json
+#			* browse(url)
+#			* parse(page)
+#			* extract(nodes)
 - uni-scraper
   - app
     - Frame
+      - Worker
+      - Service
+        - Config
+        - Db
+        - Hook
+        - Service.php
+      - Job
+        - AbstractJob.php
     - Toolkit
       - Browser
         - Http
         - Js
         - BrowserToolkit.php
       - Extractor
+        - Html
+          - Extractor.php
+          - Node.php
         - Extractor.php
+        - Node.php
       - Parser
         - Html
         - Xml
@@ -38,12 +65,6 @@
         - Yaml
         - ParserToolkit.php
       - Toolkit.php
-    - Service
-      - Hook
-        - HookService.php
-      - Db
-      - Config
-      - Service.php
   - vendor
   - instance
     - unis-sample
