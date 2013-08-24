@@ -1,12 +1,13 @@
 {
-	"tool-kit": {
+	"toolkit": {
 		"browser": "http",
-		"parser": "html"
+		"parser": "html",
+		"extractor": "html"
 	},
 	"service": [
-		"hook",
+		"config",
 		{"db": "mysql"},
-		"config"
+		"hook"
 	],
 	"storage": {
 		"type": "db",

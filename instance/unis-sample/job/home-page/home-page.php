@@ -3,7 +3,6 @@
 class HomePageJob extends AbstractJob {
 	public function run () {
 		$this->browse($this->spec('base_url'));
-
 		if (!$this->page) {
 			$this->hookTrigger('page-not-found', $this->spec('base_url'));
 		}
