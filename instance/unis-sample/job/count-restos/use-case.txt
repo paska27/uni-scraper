@@ -6,7 +6,7 @@ Objectives:
 Note:
 there is no direct link to 'view all restaurants'. instead on all restaurants
 page groups of restaurants is given. so count for specific city will be
-sum of counts for each of the groups.
+sum of counts for each of the groups of restaurants.
 
 
 Algorithm:
