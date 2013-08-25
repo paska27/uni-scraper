@@ -32,10 +32,21 @@
 #		- can access any tool (specified in unis.json) as service, so
 # no need to ovehead it with bulk properties holding tools
 #		- will have some 'magic' instructions:
-#			* spec(keys): finds values from job.json
-#			* browse(url)
-#			* parse(page)
-#			* extract(nodes)
+#			* browse(url) -> page
+#			* parse(page) -> nodes
+#			* extract(nodes) -> records
+#			* spec(keys) -> jobSpec
+
+# AbstractNode.php:
+#The result of parse is a set of nodes.
+#Node is defined by:
+# - its path in the tree
+# - its family (ancestors, descendants, siblings)
+# - its properties. E.g. for xml/html tags that would be: text and attributes.
+#For json that would be only text
+#
+#NOTE: extractor works with nodes. And by default (if not specified in job.json)
+#it extracts info from text property of the origin (progenitor) node
 - uni-scraper
   - app
     - Frame
@@ -63,7 +74,8 @@
         - Xml
         - Json
         - Yaml
-        - ParserToolkit.php
+        - AbstractNode.php
+        - AbstractParser.php
       - Toolkit.php
   - vendor
   - instance
