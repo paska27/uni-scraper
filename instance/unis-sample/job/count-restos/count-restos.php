@@ -2,6 +2,7 @@
 
 class CountRestosJob extends AbstractJob {
 	private $countsDir;
+	private $counts;
 	
 	public function __construct()
 	{
@@ -36,11 +37,15 @@ class CountRestosJob extends AbstractJob {
 		}
 	}
 	
+	private function saveCityCount($city, $group, Integer $count) {
+		$this->counts[$city]['group'][$group] = $count;
+		$this->counts[$city]['group']['total'] += $count;
+	}
+	
 	/**
 	 * Results:
 	 * array(
-	 *		array(
-	 *			'city' => 'London'
+	 *		'london' => array(
 	 *			'group' => array(
 	 *				'Orient' => 10000,
 	 *				'Western' => 25000,
