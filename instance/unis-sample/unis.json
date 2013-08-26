@@ -6,6 +6,7 @@
 	},
 	"service": [
 		"config",
+		"spec",
 		{"db": "mysql"},
 		"hook"
 	],
