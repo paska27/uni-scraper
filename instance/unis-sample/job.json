@@ -1,3 +1,5 @@
 {
-	"base_url": "http://somesite.com"
+	"browse": {
+		"base_url": "http://somesite.com"
+	}
 }

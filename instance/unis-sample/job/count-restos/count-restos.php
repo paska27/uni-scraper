@@ -28,7 +28,7 @@ class CountRestosJob extends AbstractJob {
 			foreach ($this->records as $rcd) {
 				$group = $rcd->text;
 				$url = $this->spaceBuildUrl('all_restos_url', array('city' => $city, 'group' => $group));
-				$this->browse();
+				$this->browse($url);
 
 				$this->parse('node_restos');
 
