@@ -30,12 +30,12 @@
 #
 #NOTE: AbstractJob:
 #		- can access any tool (specified in unis.json) as service, so
-# no need to ovehead it with bulk properties holding tools
+# no need to overhead it with bulk properties holding tools
 #		- will have some 'magic' instructions:
 #			* browse(url) -> page
 #			* parse(page) -> nodes
 #			* extract(nodes) -> records
-#			* spec(keys) -> jobSpec
+#			* spec(keys) -> spec
 
 # AbstractNode.php:
 #The result of parse is a set of nodes.
@@ -44,6 +44,16 @@
 # - its family (ancestors, descendants, siblings)
 # - its properties. E.g. for xml/html tags that would be: text and attributes.
 #For json that would be only text
+#Abstract Methods:
+#---traversing tree
+# * find($path, $direction, $level) - searches for nodes regarding direction
+#on level(s) deep specified
+# * descendants($path, $level = null) = find($path, DOWN, $level)
+# * children($path) = descendants($path, 1)
+# * ancestors($path, $level = null) = find($path, UP, $level)
+# * parent($path) = ancestors($path, 1)
+#---data handling
+# * get($property) - returns contents from property
 #
 #NOTE: extractor works with nodes. And by default (if not specified in job.json)
 #it extracts info from text property of the origin (progenitor) node

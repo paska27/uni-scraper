@@ -1,5 +1,9 @@
 <?php
 
+namespace UnisSample\Job;
+
+use UniScraper\Frame\Job\AbstractJob;
+
 class RichRssJob extends AbstractJob {
 	public function run() {
 		foreach ($this->getItems() as $item) {/* @var HtmlNode $item */
@@ -17,11 +21,14 @@ class RichRssJob extends AbstractJob {
 		return $this->nodes;
 	}
 
-	private function extractOneItem(HtmlNode $item)
-	{
-		$this->extractFields('list.item.fields');
+	private function extractOneItem(HtmlNode $item) {
+		// list item
+		$this->extractFields($item, 'list.item.fields');
 		
-		
+		// details
+		$this->browse($this->spec('list.details_url'));
+		$this->parse();
+		$this->extractFields($this->nodes, 'details.fields');
 	}
 	
 }
