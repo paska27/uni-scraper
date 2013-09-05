@@ -1,6 +1,10 @@
 {
 	"toolkit": {
-		"browser": "http",
+		"browser": {
+			"http": {
+				"disallow_status_codes": "404, 500"
+			}
+		},
 		"parser": "html",
 		"extractor": "html"
 	},
@@ -8,7 +12,7 @@
 		"config",
 		"spec",
 		{"db": "mysql"},
-		"hook"
+		"ftp"
 	],
 	"storage": {
 		"type": "db",

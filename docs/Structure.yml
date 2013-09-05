@@ -1,0 +1,52 @@
+# Code base structure:
+# Frame - the skeleton that connects things together
+# Toolkit - tools to perform actual job(s)
+# Service - the idea here is to 'wrap' tools from Toolkit to be avaiable in multiple places (~singleton)
+#		Hook - hooks to trigger in during the job. Probaly no need to be a standalone toolkit.
+#
+
+
+
+
+# AbstractService.php will have static::$dependancies to specify other
+#services to be loaded. Now if e.g. config.db needs a db service and
+#db also requested in unis.json, it won't be loaded twice.
+- uni-scraper
+  - app
+    - Frame
+      - Worker
+      - Service
+        - Config
+          - Json
+          - Ini
+          - Yaml
+          - Db
+          - AbstractConfig.php
+        - Db
+        - Hook
+        - AbstractService.php
+      - Job
+        - AbstractJob.php
+    - Toolkit
+      - Browser
+        - Http
+        - Js
+        - AbstractBrowser.php
+      - Extractor
+        - Html
+          - Extractor.php
+        - AbstractExtractor.php
+        - AbstractRecord.php
+      - Parser
+        - Html
+          - Parser
+          - Node
+        - Xml
+        - Json
+        - Yaml
+        - AbstractNode.php
+        - AbstractParser.php
+  - vendor
+  - test
+  - instance
+    - ...

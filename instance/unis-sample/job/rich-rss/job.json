@@ -1,12 +1,16 @@
 {
 	"browse": {
-		"events_list": "{.base_url}/events"
+		"events_list": ":base_url/events",
+		"details_url": "/h3[0]/a[0]"
+	},
+			
+	"parse": {
+		"list": "//div[@class='events-list']/ul/li/div"
 	},
 			
 	"extract": {
 		"list": {
-			"item": "//div[@class='events-list']/ul/li/div",
-			"fields": {
+			"fieldMap": {
 				"title": "/h3[0]",
 				"datestart": {
 					"path": "/div[0]",
@@ -34,11 +38,10 @@
 						}
 					}
 				}
-			},
-			"details_url": "/h3[0]/a[0]"
+			}
 		},
 		"details": {
-			"fields": {
+			"fieldMap": {
 				"title": "//h1",
 				"dates": "//div[@class='when']/span[0]",
 				"description": "//div[@class='description']",

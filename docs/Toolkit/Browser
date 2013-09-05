@@ -1,0 +1,23 @@
+Browser
+
+Description:
+---
+Requests the page and returns its contents.
+The page can be: html, xml, json, yaml etc, but alwasy the string.
+
+Input parameters:
+---
+* string $url
+
+Returns:
+---
+* string $page
+
+Configuration:
+---
+* :flavor:
+	* http
+	* java script - client side ? nodejs ?
+* :request - can be GET, POST etc. Headers for request.
+* :allowed_status_codes - e.g. allow 404, 500 etc
+* :disallowed_status_codes - e.g. skip 404, 500 etc
