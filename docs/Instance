@@ -1,0 +1,26 @@
+Instances
+
+1. Instance is a specific project, an instance of Uni Scraper
+
+2. A name for instance could be prefixed with "unis-" as a convention
+
+3. Instance consists of jobs. They are a building blocks. They have to 
+inherit from AbstractJob.php in order to have all tools requested in unis.json. 
+Inside them instructions are available: 
+- browse(url), 
+- parse(page), 
+- extract(nodes),
+- spec(path_spec).
+A specific job can have its own user-defined instructions.
+
+4. unis.json. Configuration file which holds to tweak the instance:
+which tools, services from UNIS to use. How to use them. How to connect to storage and so on.
+
+5. job.json. Configuration file for jobs. Instance-level job.json is
+overwritten with job-level job.json files. They hold configuration corresponding to job's main instructions:
+- browse: urls to browse
+- parse: paths to parse specific parts of the page. E.g. for html/xml pages 
+these could be xpath's.
+- extract: field => path maps. the path is abstract for any kind of extractor.
+
+6. Run.php is a starting point.

@@ -5,65 +5,57 @@ namespace UniScraper\Frame\Job;
 use UniScraper\Toolkit\Parser\AbstractNode;
 
 abstract class AbstractJob {
-	
+
 	protected $page;
-	
+
 	protected $nodes;
-	
+
 	protected $records;
-	
+
 	protected $spec;
 
-	/**
-	 *********Conrnerstone of the job*********
-	 */
+	abstract public function run();
 	
 	/**
 	 * Wrapper over Browser
 	 * 
-	 * @param string $url
+	 * @param string $urlKey - url or spec key to get the url
+	 * 
 	 * @return string $page
 	 */
-	protected function browse($url) {}
-	
+	protected function browse($urlKey) {
+		$url = $this->geSpecValue('browse', $urlKey);
+		return $this->page = service('browser')->browse($url);
+	}
+
 	/**
 	 * Wrapper over Parser
 	 * 
-	 * @param string $path
+	 * @param string $pathKey - path to page's specific area or spec key
+	 * 
 	 * @return AbstractNode[] $nodes
 	 */
-	protected function parse($path = null) {}
-	
-	
+	protected function parse($pathKey = null) {
+		$path = ($pathKey) ? $this->geSpecValue('parse', $pathKey) : null;
+		return $this->nodes = service('parser')->parse($this->page, $path);
+	}
+
 	/**
 	 * Wrapper over Exractor
 	 * 
-	 * @param AbstractNode[] $nodes
-	 * @param string|array $spec - specification on how/what to extract from node
-	 * @param string $fieldName - field name to store value as
+	 * @param string $fieldMapKey - {field => search} map or spec key
 	 */
-	protected function extract($nodes, $spec, $fieldName = null) {}
-	
-	protected function spec($path) {}
+	protected function extract($fieldMapKey) {
+		$fieldMap = $this->geSpecValue('extract', $fieldMapKey);
+		return $this->records = service('extractor')->extract($this->nodes, $fieldMap);
+	}
 
 
-/**
-	 *********Wrapper API*********
-	 */
-	
-	/**
-	 * 
-	 * @param AbstractNode $node
-	 * @param string|array $fields
-	 */
-	protected function extractFields(AbstractNode $node, $fields) {
-		if (is_string($fields)) {
-			// spec path given, find fields map
-			$fields = $this->spec($fields);
+	private function geSpecValue($toolName, $key) {
+		if (strpos($key, ':') !== 0) {
+			return $key;
 		}
-		
-		foreach ($fields as $fieldName => $spec) {
-			$this->extract($node, $spec, $fieldName);
-		}
+		$key = $toolName . '.' . substr($key, 1);
+		return service('spec')->get($key);
 	}
 }

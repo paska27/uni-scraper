@@ -1,0 +1,12 @@
+Uni Scraper
+
+Goal:
+---
+Build "universal" (cover 85 to 95 % cases) web content scraper.
+It should be able performing complex requests, parse pages of different
+formats and make extraction storing results where specified.
+
+Solution:
+---
+Create a frame work which can solve most of the general cases "out-of-the-box"
+and can be configured/extended (using 'instances') for specific needs.
