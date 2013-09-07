@@ -1,0 +1,10 @@
+Uni Scraper
+
+A starting point of the application.
+New instance is created instantiating this class.
+
+Possible methods:
+---
+* Constructor: sets some vars (as @instancePath etc)
+* init: run worker, read unis.json, create services specified, etc.
+* jobsRun: run jobs

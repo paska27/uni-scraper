@@ -1,6 +1,6 @@
 Worker 
 
 1. Prepares environment: 
-	- reads unis.json configuration and creates a set of tools available as services
-	- reads job.json 'global'
+	- reads unis.json configuration(s) on global/job level
+	- creates a set of tools available as services
  2. Scans jobs folder, creates jobs, runs them

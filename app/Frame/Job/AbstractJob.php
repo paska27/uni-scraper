@@ -2,9 +2,10 @@
 
 namespace UniScraper\Frame\Job;
 
+use UniScraper\Frame\IRunable;
 use UniScraper\Toolkit\Parser\AbstractNode;
 
-abstract class AbstractJob {
+abstract class AbstractJob implements IRunable {
 
 	protected $page;
 
@@ -13,8 +14,6 @@ abstract class AbstractJob {
 	protected $records;
 
 	protected $spec;
-
-	abstract public function run();
 	
 	/**
 	 * Wrapper over Browser
