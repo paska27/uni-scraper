@@ -1,4 +1,0 @@
-Service is available any where in the code (~singletone).
-
-There are 'pure' services (as config, db, etc) which exist only in this
-form. And also every tool/class can become a service.

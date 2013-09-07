@@ -1,4 +1,0 @@
-	Toolkit provides a set of tools which are the 'working horses' of uni scraper
-project. The can be used outside of the uni scraper project much like symfony's
-components.
-	The corner stone tools are: browser, parser and extractor.

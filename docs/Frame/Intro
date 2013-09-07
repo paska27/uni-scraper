@@ -1,9 +1,0 @@
-Frame - the skeleton that connects things together.
-
-	Imagine a worker. He builds a frame. Prepares environment creating tools and
-services and suspending (services) to some frame's 'nodes' so the are available
-at any time in any place inside that frame.
-	Because he is building frame inside the instance he scans on jobs,
-creates them, prepares and runs them.
-	Inside jobs tools/services are available to be used whether as wrappers provided
-by AbstractJob or access directly (since they are services).

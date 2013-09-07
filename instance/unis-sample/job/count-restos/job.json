@@ -1,7 +1,0 @@
-{
-	"counts_dir": "counts",
-	"all_restos_url": "[city]/restaurants/all",
-	"all_restos_group_url": "[city]/restaurants:[group]/all",
-	"node_restos_groups": "//ul[@class='restaurant-groups']/li/a",
-	"node_restos": "//ul[@class='restaurants']/li/a"
-}
