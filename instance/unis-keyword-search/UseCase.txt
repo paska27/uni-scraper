@@ -1,0 +1,72 @@
+I would like you to find sales leads for woman's clothing boutiques and shops 
+in the US midwest. You would be searching for keywords on on various listing 
+and review sites.  I can share the list of cities, the keywords and 
+the source sites I am interested in searching in. 
+The results should be put into a spreadsheet.
+
+Would need to scrape the following:
+Store Name
+URL
+Address
+Phone Number
+Store Hours (if available)
+Contact Name (if available)
+Phone number or email address 
+
+Sites:
+* us-fashion.com
+paths: 
+/shops/list
+/best-boutiques/
+
+* glamour-girls
+paths:
+/best-stuff/
+
+
+Solution:
+---
+The list of sites is given along with particular pages/lists to visit. 
+In those lists search by keywords have to be done. 
+If search succeeded - fields above should be stored.
+
+Technical:
+---
+* each site will be a job. 
+And each job will have to be configured specifically (e.g.: browser, parse, extractor).
+* each site will have definition of what is list: (e.g. <li class="boutique">[\s\S]*</li>)
+* each site will have a vocabulary on how to extract those fields (e.g. "store\s*name", "boutique", etc...)
+* a global configuration for those things will of course exist
+* results for each job will be store in its corresponding excel file
+* a global excel merge will be done for all jobs
+
+Algorithm:
+---
+1. run each job (~site)
+2. for each pages, areas, form searches specified parse shops using keywords
+and store them in files
+3. for each shop (~item) run extractor and scrap fields using vocabulary
+4. store structured shops' info into excel
+4. run global merge of jobs' excels
+
+Structure:
+---
+unis-keyword-search
+	- job
+		- somesite.com
+			- storage
+				- item-html
+					- 06.09.2013_214453.html
+					- ...
+				- excel
+					- 06.09.2013_214503.excel
+					- ...
+			- job.php
+			- job.json
+			- unis.json
+		- ...
+	- master-export
+		- 06.09.2013_214607.excel
+	- job.json
+	- unis.json
+	- run.php

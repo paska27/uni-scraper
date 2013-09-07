@@ -15,18 +15,9 @@
   - app
     - Frame
       - Worker
-      - Service
-        - Config
-          - Json
-          - Ini
-          - Yaml
-          - Db
-          - AbstractConfig.php
-        - Db
-        - Hook
-        - AbstractService.php
       - Job
         - AbstractJob.php
+      - UniScraper.php
     - Toolkit
       - Browser
         - Http
@@ -46,6 +37,17 @@
         - Yaml
         - AbstractNode.php
         - AbstractParser.php
+    - Service
+      - Config
+        - Json
+        - Ini
+        - Yaml
+        - Db
+        - Spec
+        - AbstractConfig.php
+     - Db
+     - Hook
+     - AbstractService.php
   - vendor
   - test
   - instance

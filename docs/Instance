@@ -5,7 +5,7 @@ Instances
 2. A name for instance could be prefixed with "unis-" as a convention
 
 3. Instance consists of jobs. They are a building blocks. They have to 
-inherit from AbstractJob.php in order to have all tools requested in unis.json. 
+inherit from AbstractJob.php in order to have all tools requested in config.json. 
 Inside them instructions are available: 
 - browse(url), 
 - parse(page), 
@@ -13,11 +13,12 @@ Inside them instructions are available:
 - spec(path_spec).
 A specific job can have its own user-defined instructions.
 
-4. unis.json. Configuration file which holds to tweak the instance:
+4. config.json. Configuration file which holds to tweak the instance:
 which tools, services from UNIS to use. How to use them. How to connect to storage and so on.
+Can be overwritten on job level.
 
-5. job.json. Configuration file for jobs. Instance-level job.json is
-overwritten with job-level job.json files. They hold configuration corresponding to job's main instructions:
+5. spec.json. Configuration file for jobs. Instance-level spec.json is
+overwritten with job-level spec.json files. They hold configuration corresponding to job's main instructions:
 - browse: urls to browse
 - parse: paths to parse specific parts of the page. E.g. for html/xml pages 
 these could be xpath's.

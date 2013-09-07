@@ -1,6 +1,6 @@
 <?php
 
-namespace UnisSample\Job;
+namespace UnisKeywordSearch\Job;
 
 use UniScraper\Frame\Job\AbstractJob;
 
