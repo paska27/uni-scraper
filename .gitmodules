@@ -1,0 +1,12 @@
+[submodule "vendor/symfony/class-loader/Symfony/Component/ClassLoader"]
+	path = vendor/symfony/class-loader/Symfony/Component/ClassLoader
+	url = https://github.com/symfony/ClassLoader
+[submodule "vendor/symfony/browser-kit/Symfony/Component/BrowserKit"]
+	path = vendor/symfony/browser-kit/Symfony/Component/BrowserKit
+	url = https://github.com/symfony/BrowserKit
+[submodule "vendor/guzzle"]
+	path = vendor/guzzle
+	url = https://github.com/guzzle/guzzle
+[submodule "vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher"]
+	path = vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher
+	url = https://github.com/symfony/EventDispatcher
