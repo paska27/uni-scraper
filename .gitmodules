@@ -10,3 +10,9 @@
 [submodule "vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher"]
 	path = vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher
 	url = https://github.com/symfony/EventDispatcher
+[submodule "vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection"]
+	path = vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection
+	url = https://github.com/symfony/DependencyInjection
+[submodule "vendor/goutte"]
+	path = vendor/goutte
+	url = https://github.com/fabpot/Goutte

@@ -11,10 +11,19 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
 	'UniScraper' => PATH_APP,
 
+	// handy abstract browser wrapper
 	'Symfony\Component\BrowserKit' => PATH_VENDOR . 'symfony/browser-kit',
+	// used in browser kit
+	// @todo: possibly for hooks as well?
 	'Symfony\Component\EventDispatcher' => PATH_VENDOR . 'symfony/event-dispatcher',
+	// used by ServiceProvider
+	'Symfony\Component\DependencyInjection' => PATH_VENDOR . 'symfony/dependency-injection',
 
+	// http client wrapper realisation using guzzle
+	'Goutte' => PATH_VENDOR . 'goutte',
+	// actual http (and not only) client
 	'Guzzle' => PATH_VENDOR . 'guzzle/src',
+	
 ));
 
 $loader->register();
