@@ -18,6 +18,8 @@ $loader->registerNamespaces(array(
 	'Symfony\Component\EventDispatcher' => PATH_VENDOR . 'symfony/event-dispatcher',
 	// used by ServiceProvider
 	'Symfony\Component\DependencyInjection' => PATH_VENDOR . 'symfony/dependency-injection',
+	// DOM traversing tool
+	'Symfony\Component\DomCrawler' => PATH_VENDOR . 'symfony/dom-crawler',
 
 	// http client wrapper realisation using guzzle
 	'Goutte' => PATH_VENDOR . 'goutte',
