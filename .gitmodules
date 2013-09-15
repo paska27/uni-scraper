@@ -16,3 +16,6 @@
 [submodule "vendor/goutte"]
 	path = vendor/goutte
 	url = https://github.com/fabpot/Goutte
+[submodule "vendor/symfony/dom-crawler/Symfony/Component/DomCrawler"]
+	path = vendor/symfony/dom-crawler/Symfony/Component/DomCrawler
+	url = https://github.com/symfony/DomCrawler
