@@ -19,3 +19,6 @@
 [submodule "vendor/symfony/dom-crawler/Symfony/Component/DomCrawler"]
 	path = vendor/symfony/dom-crawler/Symfony/Component/DomCrawler
 	url = https://github.com/symfony/DomCrawler
+[submodule "vendor/symfony/configuration/Symfony/Component/Config"]
+	path = vendor/symfony/configuration/Symfony/Component/Config
+	url = https://github.com/symfony/Config

@@ -20,6 +20,7 @@ $loader->registerNamespaces(array(
 	'Symfony\Component\DependencyInjection' => PATH_VENDOR . 'symfony/dependency-injection',
 	// DOM traversing tool
 	'Symfony\Component\DomCrawler' => PATH_VENDOR . 'symfony/dom-crawler',
+	'Symfony\Component\Config' => PATH_VENDOR . 'symfony/configuration',
 
 	// http client wrapper realisation using guzzle
 	'Goutte' => PATH_VENDOR . 'goutte',
