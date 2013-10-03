@@ -19,8 +19,9 @@ abstract class AbstractFileConfig extends AbstractConfig
 			unset($resources['filename']);
 		} else {
 			// get first resource's filename
-			$resources = array_values($resources);// reset array
-			$filename = pathinfo($resources, PATHINFO_FILENAME);
+			$first = array_shift($resources);
+			$filename = pathinfo($first, PATHINFO_BASENAME);
+			array_unshift($resources, pathinfo($first, PATHINFO_DIRNAME));
 		}
 		
 		$locator = new FileLocator($resources);
@@ -28,7 +29,7 @@ abstract class AbstractFileConfig extends AbstractConfig
 			try {
 				$this->bag->mergeData($this->parseData(file_get_contents($file)));
 			} catch (\Exception $e) {
-				throw new \Exception($e->getMessage() . ", file: $file");
+				throw new \Exception($e->getMessage() . ", file: '$file'");
 			}
 		}
 	}
