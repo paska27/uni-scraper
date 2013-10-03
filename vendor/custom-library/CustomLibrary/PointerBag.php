@@ -26,10 +26,7 @@ class PointerBag
 	}
 	
 	public function __toString() {
-		$v = (string) $this->v();
-		$this->reset();
-		
-		return $v;
+		return (string) $this->v();
 	}
 	
 	public function mergeData(array $data) {
