@@ -7,11 +7,6 @@ class PointerBag
 	
 	protected $pointer;
 	
-	public function mergeData(array $data) {
-		$this->data = array_merge_recursive($this->data, $data);
-		$this->reset();
-	}
-	
 	public function getData() {
 		return $this->data;
 	}
@@ -35,6 +30,11 @@ class PointerBag
 		$this->reset();
 		
 		return $v;
+	}
+	
+	public function mergeData(array $data) {
+		$this->data = array_merge_recursive($this->data, $data);
+		$this->reset();
 	}
 	
 	public function reset() {
