@@ -11,6 +11,9 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
 	'UniScraper' => PATH_APP,
 
+	// custom library
+	'CustomLibrary' => PATH_VENDOR . 'custom-library',
+
 	// handy abstract browser wrapper
 	'Symfony\Component\BrowserKit' => PATH_VENDOR . 'symfony/browser-kit',
 	// used in browser kit

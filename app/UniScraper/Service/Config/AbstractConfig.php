@@ -1,17 +1,24 @@
 <?php
 namespace UniScraper\Service\Config;
 
-use Symfony\Component\Config\Loader\Loader;
+use CustomLibrary\PointerBag;
 
-abstract class AbstractConfig {
-
+abstract class AbstractConfig
+{
 	/**
 	 *
-	 * @var \stdClass
+	 * @var \CustomLibrary\PointerBag
 	 */
 	protected $bag;
+	
+	public function __construct() {
+		$this->bag = new PointerBag();
+	}
 	
 	public function __get($name) {
 		return $this->bag->$name;
 	}
+	
+	abstract protected function load(array $resources);
+
 }
