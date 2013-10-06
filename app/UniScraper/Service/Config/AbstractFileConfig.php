@@ -5,8 +5,6 @@ use Symfony\Component\Config\FileLocator;
 
 abstract class AbstractFileConfig extends AbstractConfig
 {
-	protected $fileDataSet;
-
 	public function __construct(array $resources, $filename = null) {
 		parent::__construct();
 		

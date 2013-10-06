@@ -1,10 +1,12 @@
 <?php
-namespace UniScraper\Service {
+namespace UniScraper\Service
+{
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class ServiceProvider {
+class ServiceProvider
+{
 
 	/**
 	 *
@@ -12,8 +14,10 @@ class ServiceProvider {
 	 */
 	static private $contanier;
 
-	static public function addService($serviceName, Definition $definition) {
-		self::getContainer()->setDefinition($serviceName, $definition);
+	static public function add($serviceName, $object) {
+		$container = self::getContainer();
+		$container->setDefinition($serviceName, new Definition())->setSynthetic(true);
+		$container->set($serviceName, $object);
 	}
 
 	static public function get($serviceName) {
@@ -35,12 +39,13 @@ class ServiceProvider {
 }
 
 // global code
-namespace {
+namespace
+{
 
 use UniScraper\Service\ServiceProvider;
 
-function service($serviceName) {
-	return ServiceProvider::get($serviceName);
-}
+	function service($serviceName) {
+		return ServiceProvider::get($serviceName);
+	}
 
 }
