@@ -1,0 +1,6 @@
+{
+	"toolkit": {
+		"browser": "http",
+		"parser": "html"
+	}
+}

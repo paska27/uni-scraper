@@ -5,22 +5,12 @@ use Symfony\Component\Config\FileLocator;
 
 abstract class AbstractFileConfig extends AbstractConfig
 {
-	public function __construct(array $resources, $filename = null) {
-		parent::__construct();
-		
-		$this->load(empty($filename) ? $resources : $resources + array('filename' => $filename));
-	}
-	
 	protected function load(array $resources) {
-		if (!empty($resources['filename'])) {
-			$filename = $resources['filename'];
-			unset($resources['filename']);
-		} else {
-			// get first resource's filename
-			$first = array_shift($resources);
-			$filename = pathinfo($first, PATHINFO_BASENAME);
-			array_unshift($resources, pathinfo($first, PATHINFO_DIRNAME));
-		}
+		$filename = pathinfo($resources[0], PATHINFO_BASENAME);
+		$resources = \CustomLibrary\XArray::from($resources)
+			->filter(function($v){return strpos($v, '/')!==false || strpos($v, '\\')!==false;})
+			->map(function($v){return pathinfo($v, PATHINFO_DIRNAME);})
+			->toArray();
 		
 		$locator = new FileLocator($resources);
 		foreach  ($locator->locate($filename, null /*currentPath*/, false/*first*/) as $file) {

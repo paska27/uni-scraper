@@ -1,7 +1,7 @@
 <?php
 namespace CustomLibrary;
 
-class PointerBag
+class PointerBag implements \IteratorAggregate
 {
 	protected $data;
 	
@@ -27,6 +27,10 @@ class PointerBag
 	
 	public function __toString() {
 		return (string) $this->v();
+	}
+	
+	public function getIterator() {
+		return new \ArrayIterator($this->data);
 	}
 	
 	public function mergeData(array $data) {
