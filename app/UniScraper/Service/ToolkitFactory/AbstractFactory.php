@@ -1,5 +1,5 @@
 <?php
-namespace UniScraper\Service;
+namespace UniScraper\Service\ToolkitFactory;
 
 abstract class AbstractFactory
 {

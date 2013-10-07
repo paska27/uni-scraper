@@ -1,5 +1,5 @@
 <?php
-namespace UniScraper\Service;
+namespace UniScraper\Service\ToolkitFactory;
 
 use Guzzle\Http\Client as GuzzleClient;
 use UniScraper\Toolkit\Browser\Http\Browser;

@@ -2,5 +2,11 @@
 	"toolkit": {
 		"browser": "http",
 		"parser": "html"
+	},
+	"service": {
+		"config": {
+			"type": "\\UniScraper\\Service\\Config\\Db",
+			"args": ""
+		}
 	}
 }
