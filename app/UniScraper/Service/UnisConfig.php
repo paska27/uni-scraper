@@ -23,7 +23,14 @@ class UnisConfig extends JsonConfig
 						->end()
 					->end()
 				->end()
-				->arrayNode('service')->end()
+				->arrayNode('service')
+					->prototype('array')
+						->children()
+							->scalarNode('type')->isRequired()->end()
+							->scalarNode('args')->end()
+						->end()
+					->end()
+				->end()
 			->end()
 		;
 		return $root;
