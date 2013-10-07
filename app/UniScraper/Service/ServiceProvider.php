@@ -18,6 +18,8 @@ class ServiceProvider
 		$container = self::getContainer();
 		$container->setDefinition($serviceName, new Definition())->setSynthetic(true);
 		$container->set($serviceName, $object);
+		
+		return $object;
 	}
 
 	static public function get($serviceName) {

@@ -117,7 +117,7 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	public function mapk($fn, $data = null) {
 		$result = array();
 		foreach($this->array as $key => $value) {
-			$result[$key] = $fn($value, $key);
+			$result[$key] = $fn($value, $key, $data);
 		}
 		return self::from($result);
 	}

@@ -1,13 +1,15 @@
 <?php
-namespace UniScraper\Service\ToolkitFactory;
+namespace UniScraper\Service;
+
+use UniScraper\Service\ServiceProvider;
 
 abstract class AbstractFactory
 {
 	protected $args = array();
 
-	public static function build($serviceName, $args = array()) {
+	public static function produce($serviceName, $args = array()) {
 		$factory = new static($args);
-		$object = $factory->produce();
+		$object = $factory->build();
 		
 		ServiceProvider::add($serviceName, $object);
 	}
@@ -16,6 +18,6 @@ abstract class AbstractFactory
 		$this->args = $args;
 	}
 	
-	abstract public function produce();
+	abstract public function build();
 
 }

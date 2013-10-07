@@ -10,7 +10,7 @@ abstract class AbstractFileConfig extends AbstractConfig
 		$filename = pathinfo($resources[0], PATHINFO_BASENAME);
 		$resources = \CustomLibrary\XArray::from($resources)
 			->filter(function($v){return strpos($v, '/')!==false || strpos($v, '\\')!==false;})
-			->map(function($v){return pathinfo($v, PATHINFO_DIRNAME);})
+			->mapk(function($v, $k, $d){return str_replace($d, '', $v);}, $filename)
 			->toArray();
 		
 		$locator = new FileLocator($resources);
