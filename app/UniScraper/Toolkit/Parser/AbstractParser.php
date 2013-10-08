@@ -1,7 +1,8 @@
 <?php
 namespace UniScraper\Toolkit\Parser;
 
-abstract class AbstractParser {
+abstract class AbstractParser
+{
 	/**
 	 *
 	 * @var string

@@ -1,7 +1,7 @@
 <?php
-namespace UniScraper\Service\ToolkitFactory;
+namespace UniScraper\Frame\ServiceFactory\Toolkit;
 
-use UniScraper\Service\AbstractFactory;
+use UniScraper\Frame\ServiceFactory\AbstractFactory;
 use UniScraper\Toolkit\Parser\Html\HtmlParser;
 
 class HtmlParserFactory extends AbstractFactory

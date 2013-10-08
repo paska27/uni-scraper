@@ -1,7 +1,7 @@
 <?php
-namespace UniScraper\Service;
+namespace UniScraper\Frame;
 
-use UniScraper\Service\Config\File\JsonConfig;
+use UniScraper\Utility\Config\File\JsonConfig;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class UnisConfig extends JsonConfig

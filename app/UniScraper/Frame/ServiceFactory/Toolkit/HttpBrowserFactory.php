@@ -1,9 +1,9 @@
 <?php
-namespace UniScraper\Service\ToolkitFactory;
+namespace UniScraper\Frame\ServiceFactory\Toolkit;
 
-use UniScraper\Service\AbstractFactory;
+use UniScraper\Frame\ServiceFactory\AbstractFactory;
 use Guzzle\Http\Client as GuzzleClient;
-use UniScraper\Toolkit\Browser\Http\Browser;
+use UniScraper\Toolkit\Browser\HttpBrowser;
 
 class HttpBrowserFactory extends AbstractFactory
 {
@@ -12,7 +12,7 @@ class HttpBrowserFactory extends AbstractFactory
 	public function build() {
 		$guzzleClient = new GuzzleClient();
 
-		$browser = new Browser();
+		$browser = new HttpBrowser();
 		$browser->setClient($guzzleClient);
 
 		if (isset($this->args[self::ARG_BASE_URL])) {

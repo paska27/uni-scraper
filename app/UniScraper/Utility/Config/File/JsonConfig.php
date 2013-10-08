@@ -1,5 +1,5 @@
 <?php
-namespace UniScraper\Service\Config\File;
+namespace UniScraper\Utility\Config\File;
 
 class JsonConfig extends AbstractFileConfig
 {

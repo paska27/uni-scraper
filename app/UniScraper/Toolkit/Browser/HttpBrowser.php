@@ -1,11 +1,11 @@
 <?php
-namespace UniScraper\Toolkit\Browser\Http;
+namespace UniScraper\Toolkit\Browser;
 
 use Guzzle\Http\Client as GuzzleClient;
 use Goutte\Client as GoutteClient;
 use Symfony\Component\BrowserKit\Response as SymfonyResponse;
 
-class Browser extends GoutteClient {
+class HttpBrowser extends GoutteClient {
 	
 	/**
 	 *

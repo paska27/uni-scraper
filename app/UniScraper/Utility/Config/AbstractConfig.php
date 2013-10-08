@@ -1,5 +1,5 @@
 <?php
-namespace UniScraper\Service\Config;
+namespace UniScraper\Utility\Config;
 
 use CustomLibrary\PointerBag;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

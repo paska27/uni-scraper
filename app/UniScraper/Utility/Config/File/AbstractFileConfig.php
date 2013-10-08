@@ -1,7 +1,7 @@
 <?php
-namespace UniScraper\Service\Config\File;
+namespace UniScraper\Utility\Config\File;
 
-use UniScraper\Service\Config\AbstractConfig;
+use UniScraper\Utility\Config\AbstractConfig;
 use Symfony\Component\Config\FileLocator;
 
 abstract class AbstractFileConfig extends AbstractConfig
