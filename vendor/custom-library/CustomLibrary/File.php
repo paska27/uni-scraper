@@ -22,4 +22,8 @@ class File
 		}
 		return $files;
 	}
+	
+	public static function rglobdir($path, $pattern = '*', $flags = 0) {
+		return self::rglob($path, $pattern, GLOB_ONLYDIR|$flags);
+	}
 }

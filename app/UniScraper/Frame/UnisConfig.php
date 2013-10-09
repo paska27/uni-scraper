@@ -27,7 +27,7 @@ class UnisConfig extends JsonConfig
 					->prototype('array')
 						->children()
 							->scalarNode('type')->isRequired()->end()
-							->scalarNode('args')->end()
+							->arrayNode('args')->end()
 						->end()
 					->end()
 				->end()

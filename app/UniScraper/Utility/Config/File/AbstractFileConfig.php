@@ -2,7 +2,7 @@
 namespace UniScraper\Utility\Config\File;
 
 use UniScraper\Utility\Config\AbstractConfig;
-use Symfony\Component\Config\FileLocator;
+use UniScraper\Utility\FileLocator;
 
 abstract class AbstractFileConfig extends AbstractConfig
 {
@@ -14,7 +14,7 @@ abstract class AbstractFileConfig extends AbstractConfig
 			->toArray();
 		
 		$locator = new FileLocator($resources);
-		foreach  ($locator->locate($filename, null /*currentPath*/, false/*first*/) as $file) {
+		foreach($locator->locate($filename, null /*currentPath*/, false/*first*/) as $file) {
 			try {
 				$this->bag->mergeData($this->parseData(file_get_contents($file)));
 			} catch (\Exception $e) {

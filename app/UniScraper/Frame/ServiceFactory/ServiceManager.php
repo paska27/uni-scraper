@@ -43,8 +43,7 @@ class ServiceManager
 	 * @param string $type
 	 */
 	static public function produce($serviceName) {
-		//@todo: rglob can be optimized to search directories only
-		$locator = new FileLocator(\CustomLibrary\File::rglob(__DIR__ . '/'));
+		$locator = new FileLocator(\CustomLibrary\File::rglobdir(__DIR__ . '/'));
 		
 		try {
 			$factoryName = self::denormalizeServiceName($serviceName) . 'Factory';

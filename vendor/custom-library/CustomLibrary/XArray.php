@@ -70,7 +70,6 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * @param string $method
 	 * @param type $args
-	 * 
 	 * @return XArray
 	 * 
 	 * @throws Exception
@@ -97,7 +96,6 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * @param callback $fn
 	 * @param mixed $data
-	 * 
 	 * @return XArray
 	 */
 	public function keymap($fn, $data = null) {
@@ -111,7 +109,6 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * @param callback $fn
 	 * @param mixed $data
-	 
 	 * @return XArray
 	 */
 	public function mapk($fn, $data = null) {
@@ -151,5 +148,20 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 		}
 		return self::from($result);
 	}
-
+	
+	/**
+	 * Merges values into self array.
+	 * 
+	 * @return XArray
+	 */
+	public function expand() {
+		$result = array();
+		foreach ($this->array as $key => $value) {
+			if (!is_array($value) && !is_numeric($key)) {
+				$value = array($key => $value);
+			}
+			$result = array_merge($result, (array) $value);
+		}
+		return self::from($result);
+	}
 }
