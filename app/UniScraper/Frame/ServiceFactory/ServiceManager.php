@@ -3,7 +3,7 @@ namespace UniScraper\Frame\ServiceFactory
 {
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\Config\FileLocator;
+use UniScraper\Utility\FileLocator;
 
 class ServiceManager
 {
@@ -43,7 +43,7 @@ class ServiceManager
 	 * @param string $type
 	 */
 	static public function produce($serviceName) {
-		$locator = new FileLocator(\CustomLibrary\File::rglobdir(__DIR__ . '/'));
+		$locator = new FileLocator(__DIR__ . '*');
 		
 		try {
 			$factoryName = self::denormalizeServiceName($serviceName) . 'Factory';
