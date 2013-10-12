@@ -30,7 +30,6 @@ class HttpBrowser extends GoutteClient {
 		$this->client->setBaseUrl($url);
 	}
 	
-	
 	public function browse($url = null) {
 		if (empty($url)) {
 			if (!($url = $this->client->getBaseUrl(false/*expand*/))) {
@@ -38,6 +37,10 @@ class HttpBrowser extends GoutteClient {
 			}
 		}
 		$this->request('GET', $url);
+		return $this->getPage();
+	}
+	
+	public function getPage() {
 		return $this->response->getContent();
 	}
 	

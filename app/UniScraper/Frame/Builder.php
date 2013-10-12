@@ -1,10 +1,11 @@
 <?php
 namespace UniScraper\Frame;
 
+use UniScraper\Utility\InterfaceRunable;
 use UniScraper\Frame\UnisConfig;
 use UniScraper\Frame\ServiceFactory\ServiceManager;
 
-class Builder
+class Builder implements InterfaceRunable
 {
 	/**
 	 * Path to actual application instance.

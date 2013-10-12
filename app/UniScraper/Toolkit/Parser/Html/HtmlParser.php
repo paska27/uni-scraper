@@ -10,8 +10,9 @@ class HtmlParser extends AbstractParser
 	/**
 	 * @return HtmlNodeTree
 	 */
-	public function parse() {
-		$nodeTree = new HtmlNodeTree($this->page);
+	public function parse($page = '') {
+		$page = !empty($page) ? $page : $this->page;
+		$nodeTree = new HtmlNodeTree($page);
 		return $nodeTree;
 	}
 }
