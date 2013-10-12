@@ -69,7 +69,11 @@ class ServiceManager
 	}
 	
 	static public function get($serviceName) {
-		return self::$contanier->get($serviceName);
+		try{
+			return self::$contanier->get($serviceName);
+		} catch(\Exception $e) {
+			throw new \Exception("No service '$serviceName' exists.");
+		}
 	}
 	
 	/**
