@@ -31,11 +31,23 @@ class ServiceManager
 
 		return $object;
 	}
-
-	static public function get($serviceName) {
-		return self::$contanier->get($serviceName);
-	}
 	
+	/**
+	 * Create service using Symfony's Definition.
+	 * 
+	 * @param string $serviceName
+	 * @param string $type - object class
+	 * @param array $args - construct arguments
+	 */
+	static public function addDefinition($serviceName, $type, array $args) {
+		try {
+			$definition = new Definition($type, $args);
+			self::getContainer()->setDefinition($serviceName, $definition);
+		} catch(\Exception $e) {
+			throw new \Exception("Could not add service using definition:\n" . $e->getMessage());
+		}
+	}
+
 	/**
 	 * Create service using factory.
 	 * 
@@ -54,6 +66,10 @@ class ServiceManager
 		}
 		
 		return self::add($serviceName, call_user_func(array($factory, 'produce')));
+	}
+	
+	static public function get($serviceName) {
+		return self::$contanier->get($serviceName);
 	}
 	
 	/**

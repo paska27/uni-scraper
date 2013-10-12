@@ -14,19 +14,24 @@ class Builder
 	private $pathApp;
 	
 	public function __construct($pathApp) {
-		$this->pathApp = $pathApp;
+		$this->pathApp = rtrim($pathApp, '/\\') . '/';
 	}
 	
 	public function run() {
-		// 1. create unis.json config service
+		// create unis.json config service
 		$unisConfig = ServiceManager::add('unis_config', new UnisConfig(array('unis.json', PATH_APP, $this->pathApp)));
 		
-		// 2. load services from config (toolkit/user services)
+		// create toolkit objects as services
 		foreach ($unisConfig->toolkit->v() as $tool => $type) {
 			ServiceManager::produce("{$type}_{$tool}");
 		}
-		
-		// 3. run jobs
+		// create user defined services
+		if ($service = $unisConfig->service->v()) {
+			foreach ($service as $name => $data) {
+				ServiceManager::addDefinition($name, $data->type->v(), 
+					UnisConfig::processServiceArgs($data->args->v(), $this->pathApp));
+			}
+		}
 	}
 
 }

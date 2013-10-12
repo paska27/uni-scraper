@@ -44,14 +44,19 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	protected $array;
 	
 	/**
-	 * @param array $array
+	 * @param mixed $array
 	 * @return XArray
 	 */
 	public static function from($array = array()) {
 		return new self($array);
 	}
 
-	public function __construct(array $array = array()) {
+	/**
+	 * @param mixed $array
+	 *
+	 * @throws \Exception
+	 */
+	public function __construct($array = array()) {
 		switch(gettype($array)) {
 			case 'array':
 				$this->array = $array; 
@@ -69,16 +74,16 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 
 	/**
 	 * @param string $method
-	 * @param type $args
+	 * @param mixed $args
 	 * @return XArray
 	 * 
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public function __call($method, $args) {
 		if (function_exists('array_' . $method))
 			$method = 'array_' . $method;
 		else if (!function_exists($method))
-			throw new Exception("Unknown method xArray::$method");
+			throw new \Exception("Unknown method xArray::$method");
 
 		array_splice($args, isset(self::$notFirst[$method]) ? self::$notFirst[$method] : 0, 0, array(&$this->array));
 		$result = call_user_func_array($method, $args);
@@ -91,7 +96,7 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 	public function offsetSet($index, $newval) { $this->array[$index] = $newval; }
 	public function offsetUnset($index) { unset($this->array[$index]); }
 
-	public function getIterator() { return new ArrayIterator($this->array); }
+	public function getIterator() { return new \ArrayIterator($this->array); }
 
 	/**
 	 * @param callback $fn
@@ -115,6 +120,18 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 		$result = array();
 		foreach($this->array as $key => $value) {
 			$result[$key] = $fn($value, $key, $data);
+		}
+		return self::from($result);
+	}
+
+	public function mapr($fn, $data = null) {
+		$result = array();
+		foreach($this->array as $key => $value) {
+			if (is_array($value)) {
+				$result[$key] = self::from($value)->mapr($fn, $data)->toArray();
+			} else {
+				$result[$key] = $fn($value, $key, $data);
+			}
 		}
 		return self::from($result);
 	}

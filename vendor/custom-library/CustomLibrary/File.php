@@ -15,6 +15,7 @@ class File
 	 * @return array $files
 	 */
 	public static function rglob($path, $pattern = '*', $flags = 0) {
+		//@todo: refactor so pattern only is used including case with {}
 		$paths = glob($path . '*', GLOB_MARK|GLOB_ONLYDIR|GLOB_NOSORT|GLOB_BRACE);
 		$files = glob($path . $pattern, $flags);
 		foreach ($paths as $path) {
@@ -22,8 +23,28 @@ class File
 		}
 		return $files;
 	}
-	
+
+	/**
+	 * Recursive rglob for directories.
+	 *
+	 * @param string $path
+	 * @param string $pattern
+	 * @param int $flags
+	 * @return array
+	 */
 	public static function rglobdir($path, $pattern = '*', $flags = 0) {
 		return self::rglob($path, $pattern, GLOB_ONLYDIR|$flags);
+	}
+
+	/**
+	 * @param string $path
+	 * @param string $prefix
+	 * @return string $path
+	 */
+	public static function prefixAbsolutePath($path, $prefix) {
+		if (isset($path[0]) && in_array($path[0], array('/', '\\'))) {
+			$path = rtrim($prefix, '/\\') . DIRECTORY_SEPARATOR . substr($path, 1);
+		}
+		return $path;
 	}
 }

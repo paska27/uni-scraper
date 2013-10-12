@@ -6,6 +6,15 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class UnisConfig extends JsonConfig
 {
+	public static function processServiceArgs($args, $pathApp) {
+		$args = \CustomLibrary\XArray::from(!empty($args) ? $args->toArray() : array());
+
+		// prefix paths with pathApp
+		$args = $args->mapr(function($v, $k, $d) {return \CustomLibrary\File::prefixAbsolutePath($v, $d);}, $pathApp);
+
+		return $args->toArray();
+	}
+	
 	public function setValidatorTree(TreeBuilder $tree) {
 		$root = 'unis';
 		$tree->root($root)
@@ -27,7 +36,9 @@ class UnisConfig extends JsonConfig
 					->prototype('array')
 						->children()
 							->scalarNode('type')->isRequired()->end()
-							->arrayNode('args')->end()
+							->arrayNode('args')
+								->prototype('variable')->end()
+							->end()
 						->end()
 					->end()
 				->end()

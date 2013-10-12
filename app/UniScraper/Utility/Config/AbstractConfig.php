@@ -1,7 +1,7 @@
 <?php
 namespace UniScraper\Utility\Config;
 
-use CustomLibrary\PointerBag;
+use CustomLibrary\PointerBag\ReadableBag as PointerBag;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor as ConfigProcessor;
 
@@ -9,11 +9,11 @@ abstract class AbstractConfig
 {
 	/**
 	 *
-	 * @var \CustomLibrary\PointerBag
+	 * @var PointerBag
 	 */
 	protected $bag;
 	
-	final public function __construct($resources) {
+	public function __construct($resources) {
 		$resources = array_values((array) $resources);
 		
 		$this->bag = new PointerBag();
@@ -24,11 +24,8 @@ abstract class AbstractConfig
 			$configTree = new TreeBuilder();
 			$rootNode = $this->setValidatorTree($configTree);
 			$processor = new ConfigProcessor();
-			$processor->process($configTree->buildTree(), array($rootNode => $this->bag->getData()));
+			$processor->process($configTree->buildTree(), array($rootNode => $this->bag->toArray()));
 		}
-		
-		// init for children
-		$this->init();
 	}
 	
 	public function __get($name) {
@@ -36,9 +33,5 @@ abstract class AbstractConfig
 	}
 	
 	abstract protected function load(array $resources);
-	
-	protected function init() {
-		
-	}
 
 }
