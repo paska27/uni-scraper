@@ -2,6 +2,7 @@
 namespace UniScraper\Frame;
 
 use UniScraper\Utility\InterfaceRunable;
+use UniScraper\Toolkit\Parser\Html\HtmlNodeTree;
 
 abstract class AbstractJob implements InterfaceRunable
 {
@@ -17,10 +18,10 @@ abstract class AbstractJob implements InterfaceRunable
 	
 	public function browse($urlSpec) {
 		$browser = $this->findTool('browser');
-		$url = parse_url(PHP_URL_SCHEME) ? $urlSpec : $this->spec($urlSpec);
+		$url = parse_url($urlSpec, PHP_URL_SCHEME) ? $urlSpec : $this->spec($urlSpec);
 		return $browser->browse($url);
 	}
-	
+
 	public function parse() {
 		$parser = $this->findTool('parser');
 		return $parser->parse($this->findTool('browser')->getPage());

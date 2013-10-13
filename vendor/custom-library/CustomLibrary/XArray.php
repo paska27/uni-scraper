@@ -181,4 +181,16 @@ class XArray implements \ArrayAccess, \IteratorAggregate
 		}
 		return self::from($result);
 	}
+
+	/**
+	 * @param callback $fn
+	 * @param mixed $data
+	 * @return XArray
+	 */
+	public function loop($fn, $data = null) {
+		foreach($this->array as $key => $value) {
+			$fn($value, $key, $data);
+		}
+		return $this;
+	}
 }

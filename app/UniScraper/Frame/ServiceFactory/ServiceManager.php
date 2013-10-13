@@ -89,7 +89,6 @@ class ServiceManager
 }
 
 // global code
-
 namespace
 {
 use UniScraper\Frame\ServiceFactory\ServiceManager;
