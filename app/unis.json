@@ -1,0 +1,12 @@
+{
+	"toolkit": {
+		"browser": "http",
+		"parser": "html"
+	},
+	"service": {
+		"spec": {
+			"type": "\\UniScraper\\Utility\\Config\\File\\JsonConfig",
+			"args": [["/spec.json", "/job*"]]
+		}
+	}
+}
