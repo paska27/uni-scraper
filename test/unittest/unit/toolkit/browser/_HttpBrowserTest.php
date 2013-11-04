@@ -1,16 +1,15 @@
 <?php
-
 namespace UniScraper\Unittest\Unit\Toolkit\Browser;
 
-use UniScraper\Unittest\Base;
+use UniScraper\Unittest\BaseTestCase;
 use Guzzle\Http\Client;
 use UniScraper\Toolkit\Browser\HttpBrowser;
 
 require_once 'autoload.php';
 
-class _HttpBrowserTest extends Base
+class _HttpBrowserTest extends BaseTestCase
 {
-	const BROWSER_NAMESPACE = '\\UniScraper\\Toolkit\\Browser\\HttpBrowser';
+	const BROWSER_NAMESPACE = '\UniScraper\Toolkit\Browser\HttpBrowser';
 	
 	public function testCreateBrowser() {
 		$client = new Client();
