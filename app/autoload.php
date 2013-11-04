@@ -1,8 +1,8 @@
 <?php
-define('PATH_APP', __DIR__ .'/../app/');
+define('PATH_APP', __DIR__ .'/');
 define('PATH_VENDOR', __DIR__ .'/../vendor/');
 
-require_once PATH_VENDOR . '/symfony/class-loader/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+require_once PATH_VENDOR . 'symfony/class-loader/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 
