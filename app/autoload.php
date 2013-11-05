@@ -23,12 +23,12 @@ $loader->registerNamespaces(array(
 	'Symfony\Component\DependencyInjection' => PATH_VENDOR . 'symfony/dependency-injection',
 	// DOM traversing tool
 	'Symfony\Component\DomCrawler' => PATH_VENDOR . 'symfony/dom-crawler',
-	'Symfony\Component\Config' => PATH_VENDOR . 'symfony/configuration',
+	'Symfony\Component\Config' => PATH_VENDOR . 'symfony/config',
 
 	// http client wrapper realisation using guzzle
-	'Goutte' => PATH_VENDOR . 'goutte',
+	'Goutte' => PATH_VENDOR . 'fabpot/goutte',
 	// actual http (and not only) client
-	'Guzzle' => PATH_VENDOR . 'guzzle/src',
+	'Guzzle' => PATH_VENDOR . 'guzzle/guzzle/src',
 	
 ));
 
