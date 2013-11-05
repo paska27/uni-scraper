@@ -1,6 +1,10 @@
 <?php
 namespace CustomLibrary;
-
+/**
+ * Class File
+ *
+ * @package CustomLibrary
+ */
 class File
 {
 	/**
