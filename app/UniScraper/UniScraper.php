@@ -3,6 +3,8 @@ namespace UniScraper;
 
 use UniScraper\Frame\Builder;
 
+define('PATH_APP', __DIR__ .'/');
+
 class UniScraper
 {
 	protected $pathApp;
