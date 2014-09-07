@@ -2,7 +2,7 @@
 	"name": "uni-scraper/uni-scraper",
 	"version": "0.1",
 	"autoload": {
-		"psr-4": {
+		"psr-0": {
 			"UniScraper\\": "app/"
 		}
 	},
