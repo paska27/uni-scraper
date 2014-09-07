@@ -1,5 +1,5 @@
 {
-	"name": "paska27/uni-scraper",
+	"name": "uni-scraper/uni-scraper",
 	"version": "0.1",
 	"require": {
 		"fabpot/goutte": "1.0.*",
