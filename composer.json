@@ -3,7 +3,8 @@
 	"version": "0.1",
 	"autoload": {
 		"psr-0": {
-			"UniScraper\\": "app/"
+			"UniScraper\\": "app/",
+			"CustomLibrary\\": "vendor/custom-library/"
 		}
 	},
 	"require": {
