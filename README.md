@@ -1,4 +1,4 @@
-unit-scraper
+uni-scraper
 ============
 
-Universal scraping framework tool
+Universal PHP scraping tool set
