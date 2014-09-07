@@ -1,6 +1,11 @@
 {
 	"name": "uni-scraper/uni-scraper",
 	"version": "0.1",
+	"autoload": {
+		"psr-4": {
+			"UniScraper\\": "app/"
+		}
+	},
 	"require": {
 		"fabpot/goutte": "1.0.*",
 		"guzzle/guzzle": "3.7.*",
